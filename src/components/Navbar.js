@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { logout } from "../api/auth";
 import UserContext from "../context/UserContext";
 
 const Navbar = () => {
@@ -39,6 +40,10 @@ const Navbar = () => {
               {user ? (
                 <button
                   to="/login"
+                  onClick={() => {
+                    logout();
+                    setUser(false);
+                  }}
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Logout
